@@ -1,0 +1,16 @@
+
+.canvas-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    height: 60vh;
+    width: 60vw;
+    background-color: lightblue;
+    margin: auto;
+    margin-block-end: 2rem ;
+}
+
+canvas{
+    border: 1px solid black;
+}

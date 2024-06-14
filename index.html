@@ -4,17 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MemeGen</title>
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body onload="onInit()">
     <main>
         <h1>MemeGen</h1>
 
-        <section class="gallery"></section>
-        <section class="editor">
+        
+        <section class="editor grid grid-center">
+
+            <fieldset>
+                <input  type="text" oninput="onGetUserText(this.value)">
+            </fieldset>
+
             <div class="canvas-container">
                 <canvas height="400px" width="400px"></canvas>
             </div>
+        </section>
+        <section class="gallery">
+            <img src="imgs/1.jpg" >
+            <img src="imgs/2.jpg" >
         </section>
 
         <img class="test" src="">
