@@ -25,13 +25,16 @@
                 <input type="color" title="stroke-color" class="stroke-color" value="#000000" id="stroke-color"
                     onchange="onSetColor()" />
 
-                <label for="fill-color">fill-color</label>    
+                <label for="fill-color">fill-color</label>
                 <input type="color" title="fill-color" class="fill-color" value="#ffffff" id="fill-color"
                     onchange="onSetColor()" />
 
+                <button class="btn" onclick="onSetTxtSize(1)">A+</button>
+                <button class="btn" onclick="onSetTxtSize(-1)">A-</button>
+
             </fieldset>
 
-            <div class="canvas-container">
+            <div class=" canvas-container">
                 <canvas height="400px" width="400px"></canvas>
             </div>
         </section>

@@ -30,3 +30,8 @@ function setColor(strokeColor,fillColor) {
     lines[selectedLineIdx].fillColor = fillColor
     lines[selectedLineIdx].strokeColor = strokeColor
 }
+
+function setTxtSize(diff) {
+    const {lines,selectedLineIdx} = gMeme
+    lines[selectedLineIdx].size+=diff
+}

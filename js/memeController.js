@@ -71,3 +71,9 @@ function onSetColor() {
     setColor(strokeColor, fillColor)
     renderMeme()
 }
+
+function onSetTxtSize(diff) {
+    console.log(diff)
+    setTxtSize(diff)
+    renderMeme()
+}
