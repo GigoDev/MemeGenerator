@@ -1,14 +1,15 @@
 'use strict'
-var gElCanvas
-var gCtx
+let gElCanvas
+let gCtx
+
+
+/////////////Rendering:
 
 function renderMeme() {
     const meme = getMeme()
-    const top = { x: gElCanvas.width / 2, y: 20 }
-    const bottom = { x: gElCanvas.width / 2, y: gElCanvas.height - 20 }
-    const { lines, selectedLineIdx, selectedImgId } = meme
+    const { lines, selectedImgId } = meme
 
-    drawImg(selectedImgId, () => drawText(lines[selectedLineIdx], top))
+    drawImg(selectedImgId, () => lines.forEach((line, idx) =>drawText( line, getTxtPos(idx))))
 }
 
 function drawImg(id, callback) {
@@ -20,25 +21,17 @@ function drawImg(id, callback) {
     }
 }
 
-function drawText({ txt, size,fillColor,strokeColor } , { x, y }) {
+function drawText({ txt, size, fillColor, strokeColor },pos) {
+    const {x,y} = pos
+
     gCtx.lineWidth = size / 20
     gCtx.strokeStyle = strokeColor
     gCtx.fillStyle = fillColor
     gCtx.font = `${size}px Arial`
-    gCtx.textAlign = 'center'
+    gCtx.textAlign = 'start'
     gCtx.textBaseline = 'middle'
     gCtx.fillText(txt, x, y)
     gCtx.strokeText(txt, x, y)
-}
-
-
-function onImgSelect(elImg) {
-    coverCanvasWithImg(elImg)
-}
-
-function coverCanvasWithImg(elImg) {
-    gElCanvas.height = (elImg.naturalHeight / elImg.naturalWidth) * gElCanvas.width
-    gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
 }
 
 function resizeCanvas() {
@@ -46,12 +39,11 @@ function resizeCanvas() {
     gElCanvas.width = elContainer.offsetWidth
     gElCanvas.height = elContainer.offsetHeight
     renderMeme()
-
 }
 
-function renderImg(src = 'img/square.jpg') {
-    const elImg = new Image()
-    elImg.src = src
+////////////////////User inputs:
+
+function onImgSelect(elImg) {
     coverCanvasWithImg(elImg)
 }
 
@@ -75,5 +67,10 @@ function onSetColor() {
 function onSetTxtSize(diff) {
     console.log(diff)
     setTxtSize(diff)
+    renderMeme()
+}
+
+function onAddLine() {
+    addLine()
     renderMeme()
 }

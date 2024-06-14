@@ -2,7 +2,6 @@
 .canvas-container{  
     height: 60vh;
     width: minmax(60vw,600px);
-    background-color: lightblue;
     margin-block-end: 2rem ;
 }
 

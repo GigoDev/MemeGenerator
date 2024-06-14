@@ -9,7 +9,14 @@ let gMeme = {
             size: 30,
             fillColor: 'white',
             strokeColor: 'black'
-        }
+        },
+
+        {
+            txt: 'Not!!!',
+            size: 30,
+            fillColor: 'white',
+            strokeColor: 'black'
+        },
     ]
 }
 
@@ -18,20 +25,35 @@ function getMeme() {
 }
 
 function setLineTxt(txt) {
-    gMeme.lines[0].txt = txt
+    const { lines, selectedLineIdx } = gMeme
+    lines[selectedLineIdx].txt = txt
 }
 
-function setImg(id){
+function setImg(id) {
     gMeme.selectedImgId = id
 }
 
-function setColor(strokeColor,fillColor) {
-    const{lines,selectedLineIdx} = gMeme
+function setColor(strokeColor, fillColor) {
+    const { lines, selectedLineIdx } = gMeme
     lines[selectedLineIdx].fillColor = fillColor
     lines[selectedLineIdx].strokeColor = strokeColor
 }
 
 function setTxtSize(diff) {
-    const {lines,selectedLineIdx} = gMeme
-    lines[selectedLineIdx].size+=diff
+    const { lines, selectedLineIdx } = gMeme
+    lines[selectedLineIdx].size += diff
+}
+
+function getTxtPos(selectedLineIdx) {
+    return { x: selectedLineIdx * 20, y: selectedLineIdx * 30 + 20 }
+}
+
+function addLine() {
+    gMeme.lines.push(_createLine())
+}
+
+function _createLine() {
+    const { size, fillColor, strokeColor } = gMeme.lines[gMeme.selectedLineIdx]
+    gMeme.selectedLineIdx++
+    return { txt: 'Add text here', size, fillColor, strokeColor }
 }
