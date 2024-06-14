@@ -60,3 +60,8 @@ function onGetUserText(text) {
     setLineTxt(text)
     renderMeme()
 }
+
+function onDownloadImg(elLink) {
+    var imgContent = gElCanvas.toDataURL();
+    elLink.href = imgContent
+}

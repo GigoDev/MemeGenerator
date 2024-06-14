@@ -15,6 +15,9 @@
 
             <fieldset>
                 <input  type="text" oninput="onGetUserText(this.value)">
+                <a class="btn" href="#" onclick="onDownloadImg(this)" download="my-meme.jpg">
+                    Download
+                </a>
             </fieldset>
 
             <div class="canvas-container">
@@ -23,7 +26,6 @@
         </section>
         <section class="gallery grid"></section>
 
-        <img class="test" src="">
     </main>
     <script src="js/memeService.js"></script>
     <script src="js/galleryService.js"></script>

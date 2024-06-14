@@ -8,3 +8,27 @@ img{
 
     width: 100%;
 }
+
+.btn {
+    border: none;
+    background-color: #eceaea;
+    padding: .5rem;
+    border-radius: 14px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #d7d6d6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    font-size: inherit;
+}
+
+input {
+    max-width: 180px;
+}
