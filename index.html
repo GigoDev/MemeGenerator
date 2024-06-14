@@ -1,23 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MemeGen</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
+
 <body onload="onInit()">
     <main>
         <h1>MemeGen</h1>
 
-        
+
         <section class="editor grid grid-center">
 
             <fieldset>
-                <input  type="text" oninput="onGetUserText(this.value)">
-                <a class="btn" href="#" onclick="onDownloadImg(this)" download="my-meme.jpg">
-                    Download
-                </a>
+
+                <input type="text" oninput="onGetUserText(this.value)">
+
+                <a class="btn" href="#" onclick="onDownloadImg(this)" download="my-meme.jpg"> Download</a>
+
+                <label for="stroke-color">stroke-color</label>
+                <input type="color" title="stroke-color" class="stroke-color" value="#000000" id="stroke-color"
+                    onchange="onSetColor()" />
+
+                <label for="fill-color">fill-color</label>    
+                <input type="color" title="fill-color" class="fill-color" value="#ffffff" id="fill-color"
+                    onchange="onSetColor()" />
+
             </fieldset>
 
             <div class="canvas-container">
@@ -32,6 +43,7 @@
     <script src="js/memeController.js"></script>
     <script src="js/galleryController.js"></script>
     <script src="js/main.js"></script>
-    
+
 </body>
+
 </html>

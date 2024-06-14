@@ -7,9 +7,8 @@ function renderMeme() {
     const top = { x: gElCanvas.width / 2, y: 20 }
     const bottom = { x: gElCanvas.width / 2, y: gElCanvas.height - 20 }
     const { lines, selectedLineIdx, selectedImgId } = meme
-    const {txt,size} = lines[selectedLineIdx]
 
-    drawImg(selectedImgId, () => drawText(txt,size, top))
+    drawImg(selectedImgId, () => drawText(lines[selectedLineIdx], top))
 }
 
 function drawImg(id, callback) {
@@ -21,15 +20,15 @@ function drawImg(id, callback) {
     }
 }
 
-function drawText(text, size, { x, y }) {
+function drawText({ txt, size,fillColor,strokeColor } , { x, y }) {
     gCtx.lineWidth = size / 20
-    gCtx.strokeStyle = 'black'
-    gCtx.fillStyle = 'white'
+    gCtx.strokeStyle = strokeColor
+    gCtx.fillStyle = fillColor
     gCtx.font = `${size}px Arial`
     gCtx.textAlign = 'center'
     gCtx.textBaseline = 'middle'
-    gCtx.fillText(text, x, y)
-    gCtx.strokeText(text, x, y)
+    gCtx.fillText(txt, x, y)
+    gCtx.strokeText(txt, x, y)
 }
 
 
@@ -64,4 +63,11 @@ function onGetUserText(text) {
 function onDownloadImg(elLink) {
     var imgContent = gElCanvas.toDataURL();
     elLink.href = imgContent
+}
+
+function onSetColor() {
+    const strokeColor = document.getElementById('stroke-color').value
+    const fillColor = document.getElementById('fill-color').value
+    setColor(strokeColor, fillColor)
+    renderMeme()
 }
