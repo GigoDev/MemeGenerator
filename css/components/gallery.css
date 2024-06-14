@@ -1,0 +1,3 @@
+.gallery{
+    grid-template-columns:minmax(100px ,autofit)
+}

@@ -1,4 +1,4 @@
-let gImgs = [{ id: 1, url: 'img/1.jpg', keywords: ['funny', 'cat'] }]
+'use strict'
 
 let gMeme = {
     selectedImgId: 1,
@@ -18,4 +18,8 @@ function getMeme() {
 
 function setLineTxt(txt) {
     gMeme.lines[0].txt = txt
+}
+
+function setImg(id){
+    gMeme.selectedImgId = id
 }

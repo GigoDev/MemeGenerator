@@ -1,36 +1,27 @@
+'use strict'
 var gElCanvas
 var gCtx
 
-function onInit() {
-    gElCanvas = document.querySelector('canvas')
-    gCtx = gElCanvas.getContext('2d')
-
-    resizeCanvas()
-    window.addEventListener('resize', resizeCanvas)
-    renderMeme()
-}
-
 function renderMeme() {
     const meme = getMeme()
-    const top = { x: gElCanvas.width/2, y: 20 }
-    const bottom = { x: gElCanvas.width/2, y: gElCanvas.height - 20 }
+    const top = { x: gElCanvas.width / 2, y: 20 }
+    const bottom = { x: gElCanvas.width / 2, y: gElCanvas.height - 20 }
+    const { lines, selectedLineIdx, selectedImgId } = meme
+    const {txt,size} = lines[selectedLineIdx]
 
-    drawImg(meme.selectedImgId, () => drawText(gMeme.lines[0].txt, gMeme.lines[0].size, top))
+    drawImg(selectedImgId, () => drawText(txt,size, top))
 }
 
 function drawImg(id, callback) {
     const elImg = new Image()
-    elImg.src = `imgs/${id}.jpg`
+    elImg.src = `img/${id}.jpg`
     elImg.onload = () => {
         gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
         callback()
     }
 }
 
-function drawText(text, size, {x, y}) {
-    console.log(x)
-    console.log(y)
-    
+function drawText(text, size, { x, y }) {
     gCtx.lineWidth = size / 20
     gCtx.strokeStyle = 'black'
     gCtx.fillStyle = 'white'
@@ -42,7 +33,7 @@ function drawText(text, size, {x, y}) {
 }
 
 
-function onSelectImg(elImg) {
+function onImgSelect(elImg) {
     coverCanvasWithImg(elImg)
 }
 
