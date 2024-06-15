@@ -76,8 +76,8 @@ function onDownloadImg(elLink) {
 }
 
 function onSetColor() {
-    gSrokeColor = document.getElementById('stroke-color').value
-    gFillColor = document.getElementById('fill-color').value
+    gSrokeColor = document.querySelector('.stroke-color').value
+    gFillColor = document.querySelector('.fill-color').value
     setColor()
     renderMeme()
 }

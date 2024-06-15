@@ -10,13 +10,13 @@
 
 <body class="main-layout" onload="onInit()">
     <header class="main-header main-layout full ">
-        
+
         <nav class="nav-bar flex align-center space-between  ">
 
-            <div class="logo">logo</div>
+            <div class="logo"><img src="Assets/LOGO/LOGO.png"></div>
             <ul class="dropdown-content clean-list">
                 <li><a onclick="onShowGallery()" href="#">gallery</a></li>
-                <li><a href="#"></a>About</li>
+                <li><a href="#">About</a></li>
             </ul>
 
         </nav>
@@ -32,25 +32,26 @@
 
             <div class="controls-container flex column align-center ">
 
-                <input  class="txt-input" type="text" placeholder="Type here" oninput="onGetUserText(this.value)">
-                <button class="btn" onclick="onAddLine()">Add line</button>
-                <button class="btn" onclick="onSwitchLine()">Switch line</button>
+                <input class="txt-input" type="text" placeholder="Type here" oninput="onGetUserText(this.value)">
+                <button class="btn" onclick="onAddLine()"><img src="Assets/ICONS/add.png"></button>
+                <button class="btn" onclick="onSwitchLine()"><img
+                        src="Assets/ICONS/up-and-down-opposite-double-arrows-side-by-side.png"></button>
 
-                <a class="btn" href="#" onclick="onDownloadImg(this)" download="my-meme.jpg"> Download</a>
-
-                <label >stroke-color
-                    <input type="color" title="stroke-color" class="stroke-color" value="#000000" id="stroke-color"
+                        
+                        <label for="stroke-color"><img src="Assets/ICONS/text stroke.png"></label>
+                        <input type="color" title="stroke-color" class="stroke-color" value="#000000" id="stroke-color"
                         onchange="onSetColor()" />
-                </label>
-
-                <label >fill-color
-                    <input type="color" title="fill-color" class="fill-color" value="#ffffff" id="fill-color"
+                        
+                        
+                        <label for="fill-color"><img src="Assets/ICONS/paint-board-and-brush.png" ></label>
+                        <input type="color" title="fill-color" class="fill-color" value="#ffffff" id="fill-color"
                         onchange="onSetColor()" />
-                </label>
-
-                <button class="btn" onclick="onSetTxtSize(1)">A+</button>
-                <button class="btn" onclick="onSetTxtSize(-1)">A-</button>
-
+                        
+                        
+                        <button class="btn" onclick="onSetTxtSize(1)"><img src="Assets/ICONS/increase font - icon.png"></button>
+                        <button class="btn" onclick="onSetTxtSize(-1)"><img src="Assets/ICONS/decrease font - icon.png" ></button>
+                        
+                        <a class="btn" href="#" onclick="onDownloadImg(this)" download="my-meme.jpg"> Download</a>
             </div>
 
         </section>

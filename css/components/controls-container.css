@@ -1,3 +1,22 @@
-.controls-container{
+.controls-container {
     gap: 1rem;
 }
+
+.stroke-color,
+.fill-color {
+    display: none;
+}
+
+.controls-container label{
+    width: 2em;
+
+    cursor: pointer;
+}
+
+.controls-container a{
+    width: auto;
+
+    color: white;
+    background-color: var(--clrPrimary1);
+}
+
