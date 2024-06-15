@@ -10,9 +10,14 @@ let gSize = 30
 
 function renderMeme() {
     const meme = getMeme()
-    const { lines, selectedImgId } = meme
+    const { lines, selectedImgId, selectedLineIdx } = meme
 
-    drawImg(selectedImgId, () => lines.forEach((line, idx) => drawText(line, getTxtPos(idx))))
+    drawImg(selectedImgId, () => {
+        lines.forEach(line => drawText(line))
+
+        drawRect(lines[selectedLineIdx].pos)
+    })
+
 }
 
 function drawImg(id, callback) {
@@ -24,7 +29,7 @@ function drawImg(id, callback) {
     }
 }
 
-function drawText({ txt, size, fillColor, strokeColor }, pos) {
+function drawText({ txt, size, fillColor, strokeColor, pos }) {
     const { x, y } = pos
 
     gCtx.lineWidth = size / 20
@@ -32,9 +37,18 @@ function drawText({ txt, size, fillColor, strokeColor }, pos) {
     gCtx.fillStyle = fillColor
     gCtx.font = `${size}px Arial`
     gCtx.textAlign = 'start'
-    gCtx.textBaseline = 'middle'
+    // gCtx.textBaseline = 'middle'
     gCtx.fillText(txt, x, y)
     gCtx.strokeText(txt, x, y)
+}
+
+function drawRect({ x, y }) {
+    const { width, height } = getRectDimensions()
+    
+    gCtx.strokeStyle = 'white'
+    gCtx.lineWidth = 2
+    gCtx.strokeRect(x, y-height+5, width, height)
+
 }
 
 function resizeCanvas() {
@@ -68,7 +82,7 @@ function onSetColor() {
 }
 
 function onSetTxtSize(diff) {
-    gSize+=diff
+    gSize += diff
     setTxtSize()
     renderMeme()
 }
@@ -78,7 +92,7 @@ function onAddLine() {
     renderMeme()
 }
 
-function onSwitchLine(){
+function onSwitchLine() {
     switchLine()
     renderMeme()
 }

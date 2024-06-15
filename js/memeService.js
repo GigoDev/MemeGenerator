@@ -7,7 +7,8 @@ let gMeme = {
         txt: 'Add text here',
         size: 30,
         fillColor: 'white',
-        strokeColor: 'black'
+        strokeColor: 'black',
+        pos: { x: 20, y: 40 }
     }]
 }
 
@@ -16,7 +17,6 @@ function getMeme() {
 }
 
 function setLineTxt(txt) {
-    console.log(txt)
     const { lines, selectedLineIdx } = gMeme
     lines[selectedLineIdx].txt = txt
 }
@@ -36,20 +36,32 @@ function setTxtSize() {
     lines[selectedLineIdx].size = gSize
 }
 
-function getTxtPos(selectedLineIdx) {
-    return { x: selectedLineIdx * 20, y: selectedLineIdx * 30 + 20 }
-}
-
 function addLine() {
+    gMeme.selectedLineIdx = gMeme.lines.length
     gMeme.lines.push(_createLine())
-    gMeme.selectedLineIdx++
 }
 
 function _createLine() {
-    return { txt: 'Add text here', size: gSize, fillColor: gFillColor, strokeColor: gSrokeColor }
+    const txt = 'Add text here'
+    const size = gSize
+    const fillColor = gFillColor
+    const strokeColor = gSrokeColor
+    const pos = { x: gMeme.selectedLineIdx * 20+20, y: gMeme.selectedLineIdx * 30 + 40 }
+
+    return { txt, size, fillColor, strokeColor, pos }
 }
 
 function switchLine() {
     gMeme.selectedLineIdx++
     if (!gMeme.lines[gMeme.selectedLineIdx]) gMeme.selectedLineIdx = 0
+}
+
+function getRectDimensions() {
+    const { lines, selectedLineIdx } = gMeme
+
+    const textMetrics = gCtx.measureText(lines[selectedLineIdx].txt);
+    const width = textMetrics.width;
+    const height = lines[selectedLineIdx].size;
+
+    return { width, height }
 }
