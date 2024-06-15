@@ -8,18 +8,29 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 
-<body onload="onInit()">
+<body class="main-layout" onload="onInit()">
+    <header class="main-header main-layout full ">
+        
+        <nav class="nav-bar flex align-center space-between  ">
+
+            <div class="logo">logo</div>
+            <ul class="dropdown-content clean-list">
+                <li><a onclick="onShowGallery()" href="#">gallery</a></li>
+                <li><a href="#"></a>About</li>
+            </ul>
+
+        </nav>
+    </header>
+
     <main>
-        <h1>MemeGen</h1>
 
-
-        <section class="editor grid grid-center">
+        <section class="editor grid">
 
             <div class=" canvas-container">
                 <canvas height="400px" width="400px" onclick="onMouseClick(event)"></canvas>
             </div>
 
-            <div class="controls-container flex column ">
+            <div class="controls-container flex column align-center ">
 
                 <input  class="txt-input" type="text" placeholder="Type here" oninput="onGetUserText(this.value)">
                 <button class="btn" onclick="onAddLine()">Add line</button>

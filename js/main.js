@@ -8,3 +8,12 @@ function onInit() {
     renderMeme()
     renderGallery()
 }
+
+function onShowGallery(){
+    document.querySelector('.editor').style.display = 'none'
+    document.querySelector('.gallery').style.display = 'grid'
+}
+function onShowEditor(){
+    document.querySelector('.gallery').style.display = 'none'
+    document.querySelector('.editor').style.display = 'grid'
+}

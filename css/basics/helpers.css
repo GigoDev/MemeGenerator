@@ -1,21 +1,70 @@
+/* grid helpers */
 
-.flex{
-display: flex;
-}
-
-.column{
-    flex-direction: column;
-}
-
-.flex-center{
-align-items: center;
-justify-content: center;
-}
-
-.grid{
+.grid {
     display: grid;
 }
 
-.grid-center{
+.grid.flow-column {
+    grid-auto-flow: column;
+}
+
+.grid.align-center {
+    align-items: center;
+}
+
+.grid.place-center {
     place-items: center;
+}
+
+.grid.space-between {
+    justify-content: space-between;
+}
+
+/* flex helpers  */
+
+.flex {
+    display: flex;
+}
+.flex.column {
+    flex-direction: column;
+}
+
+.flex.space-between {
+    justify-content: space-between;
+}
+
+.flex.align-center {
+    align-items: center;
+}
+
+/* list helpers */
+
+.clean-list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+/* display helpers */
+
+.hidden {
+    display: none;
+}
+
+/* backdrop helpers */
+
+
+
+/* Position helpers */
+
+.absolute {
+    position: absolute;
+}
+
+.relative {
+    position: relative;
+}
+
+.fixed {
+    position: fixed;
 }

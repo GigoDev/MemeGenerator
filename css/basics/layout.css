@@ -1,8 +1,25 @@
-.gallery {
-    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-    gap: 20px;
+/* main-layout */
+
+.main-layout {
+    display: grid;
+    grid-template-columns:
+        minmax(20px, 1fr) minmax(auto, 860px) minmax(20px, 1fr);
+        gap: 1em;
 }
 
-.editor{
-    grid-template-columns: 1fr 1fr;
+.main-layout>*:not(.full) {
+    grid-column: 2;
+}
+
+.main-layout>*.full {
+    grid-column: 1/-1;
+}
+
+/* Gallery layout */
+
+.gallery {
+    display: none;
+
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 20px;
 }

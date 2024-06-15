@@ -11,10 +11,11 @@ function renderGallery() {
             }
         elImg.dataset.id= id   
         elImg.addEventListener("click",function(){ onImgSelect(this.dataset.id)})
+        elImg.addEventListener("click",function(){ onShowEditor()})
     });
 }
 
 function onImgSelect(id) {
     setImg(id)
-    renderMeme()
+    renderMeme() 
 }

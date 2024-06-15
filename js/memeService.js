@@ -62,7 +62,6 @@ function selectLine(idx) {
 function getTxtMeasurement() {
     const { lines, selectedLineIdx } = gMeme
     const fontSize = lines[selectedLineIdx].size
-    console.log(selectedLineIdx)
 
     gCtx.font = `${fontSize}px Arial`
 
