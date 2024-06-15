@@ -32,8 +32,7 @@ function setColor() {
 }
 
 function setTxtSize() {
-    const { lines, selectedLineIdx } = gMeme
-    lines[selectedLineIdx].size = gSize
+    gMeme.lines[gMeme.selectedLineIdx].size = gSize
 }
 
 function addLine() {
@@ -56,12 +55,20 @@ function switchLine() {
     if (!gMeme.lines[gMeme.selectedLineIdx]) gMeme.selectedLineIdx = 0
 }
 
-function getRectDimensions() {
+function selectLine(idx) {
+    gMeme.selectedLineIdx = idx
+}
+
+function getTxtMeasurement() {
     const { lines, selectedLineIdx } = gMeme
+    const fontSize = lines[selectedLineIdx].size
+    console.log(selectedLineIdx)
+
+    gCtx.font = `${fontSize}px Arial`
 
     const textMetrics = gCtx.measureText(lines[selectedLineIdx].txt);
     const width = textMetrics.width;
-    const height = lines[selectedLineIdx].size;
+    const height = fontSize;
 
     return { width, height }
 }

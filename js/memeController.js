@@ -4,6 +4,7 @@ let gCtx
 let gSrokeColor = 'black'
 let gFillColor = 'white'
 let gSize = 30
+const PADDING = 5
 
 
 /////////////Rendering:
@@ -43,11 +44,11 @@ function drawText({ txt, size, fillColor, strokeColor, pos }) {
 }
 
 function drawRect({ x, y }) {
-    const { width, height } = getRectDimensions()
-    
+    const { width, height } = getTxtMeasurement()
+
     gCtx.strokeStyle = 'white'
     gCtx.lineWidth = 2
-    gCtx.strokeRect(x, y-height+5, width, height)
+    gCtx.strokeRect(x - PADDING, y - height + PADDING, width + PADDING * 2, height)
 
 }
 
@@ -93,6 +94,22 @@ function onAddLine() {
 }
 
 function onSwitchLine() {
+    let elInput = document.querySelector('.txt-input')
+    elInput.value = ''
     switchLine()
     renderMeme()
 }
+
+function onMouseClick(ev) {
+    const { offsetX, offsetY } = ev
+    const clickedLineIdx = gMeme.lines.findIndex(({ pos }) => {
+        const { width, height } = getTxtMeasurement()
+
+        return offsetX >= pos.x - PADDING && offsetX <= pos.x + width + PADDING &&
+            offsetY >= pos.y - height && offsetY <= pos.y
+    })
+
+    selectLine(clickedLineIdx)
+    renderMeme()
+}
+

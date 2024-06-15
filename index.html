@@ -16,12 +16,12 @@
         <section class="editor grid grid-center">
 
             <div class=" canvas-container">
-                <canvas height="400px" width="400px"></canvas>
+                <canvas height="400px" width="400px" onclick="onMouseClick(event)"></canvas>
             </div>
 
             <div class="controls-container flex column ">
 
-                <input type="text" placeholder="Type here" oninput="onGetUserText(this.value)">
+                <input  class="txt-input" type="text" placeholder="Type here" oninput="onGetUserText(this.value)">
                 <button class="btn" onclick="onAddLine()">Add line</button>
                 <button class="btn" onclick="onSwitchLine()">Switch line</button>
 
