@@ -1,6 +1,9 @@
 'use strict'
 let gElCanvas
 let gCtx
+let gSrokeColor = 'black'
+let gFillColor = 'white'
+let gSize = 30
 
 
 /////////////Rendering:
@@ -9,7 +12,7 @@ function renderMeme() {
     const meme = getMeme()
     const { lines, selectedImgId } = meme
 
-    drawImg(selectedImgId, () => lines.forEach((line, idx) =>drawText( line, getTxtPos(idx))))
+    drawImg(selectedImgId, () => lines.forEach((line, idx) => drawText(line, getTxtPos(idx))))
 }
 
 function drawImg(id, callback) {
@@ -21,8 +24,8 @@ function drawImg(id, callback) {
     }
 }
 
-function drawText({ txt, size, fillColor, strokeColor },pos) {
-    const {x,y} = pos
+function drawText({ txt, size, fillColor, strokeColor }, pos) {
+    const { x, y } = pos
 
     gCtx.lineWidth = size / 20
     gCtx.strokeStyle = strokeColor
@@ -58,19 +61,24 @@ function onDownloadImg(elLink) {
 }
 
 function onSetColor() {
-    const strokeColor = document.getElementById('stroke-color').value
-    const fillColor = document.getElementById('fill-color').value
-    setColor(strokeColor, fillColor)
+    gSrokeColor = document.getElementById('stroke-color').value
+    gFillColor = document.getElementById('fill-color').value
+    setColor()
     renderMeme()
 }
 
 function onSetTxtSize(diff) {
-    console.log(diff)
-    setTxtSize(diff)
+    gSize+=diff
+    setTxtSize()
     renderMeme()
 }
 
 function onAddLine() {
     addLine()
+    renderMeme()
+}
+
+function onSwitchLine(){
+    switchLine()
     renderMeme()
 }

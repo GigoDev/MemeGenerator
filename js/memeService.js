@@ -3,21 +3,12 @@
 let gMeme = {
     selectedImgId: 1,
     selectedLineIdx: 0,
-    lines: [
-        {
-            txt: 'I sometimes eat Falafel',
-            size: 30,
-            fillColor: 'white',
-            strokeColor: 'black'
-        },
-
-        {
-            txt: 'Not!!!',
-            size: 30,
-            fillColor: 'white',
-            strokeColor: 'black'
-        },
-    ]
+    lines: [{
+        txt: 'Add text here',
+        size: 30,
+        fillColor: 'white',
+        strokeColor: 'black'
+    }]
 }
 
 function getMeme() {
@@ -25,6 +16,7 @@ function getMeme() {
 }
 
 function setLineTxt(txt) {
+    console.log(txt)
     const { lines, selectedLineIdx } = gMeme
     lines[selectedLineIdx].txt = txt
 }
@@ -33,15 +25,15 @@ function setImg(id) {
     gMeme.selectedImgId = id
 }
 
-function setColor(strokeColor, fillColor) {
+function setColor() {
     const { lines, selectedLineIdx } = gMeme
-    lines[selectedLineIdx].fillColor = fillColor
-    lines[selectedLineIdx].strokeColor = strokeColor
+    lines[selectedLineIdx].fillColor = gFillColor
+    lines[selectedLineIdx].strokeColor = gSrokeColor
 }
 
-function setTxtSize(diff) {
+function setTxtSize() {
     const { lines, selectedLineIdx } = gMeme
-    lines[selectedLineIdx].size += diff
+    lines[selectedLineIdx].size = gSize
 }
 
 function getTxtPos(selectedLineIdx) {
@@ -50,10 +42,14 @@ function getTxtPos(selectedLineIdx) {
 
 function addLine() {
     gMeme.lines.push(_createLine())
+    gMeme.selectedLineIdx++
 }
 
 function _createLine() {
-    const { size, fillColor, strokeColor } = gMeme.lines[gMeme.selectedLineIdx]
+    return { txt: 'Add text here', size: gSize, fillColor: gFillColor, strokeColor: gSrokeColor }
+}
+
+function switchLine() {
     gMeme.selectedLineIdx++
-    return { txt: 'Add text here', size, fillColor, strokeColor }
+    if (!gMeme.lines[gMeme.selectedLineIdx]) gMeme.selectedLineIdx = 0
 }
