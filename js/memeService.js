@@ -21,6 +21,11 @@ function setLineTxt(txt) {
     lines[selectedLineIdx].txt = txt
 }
 
+function removeLine() {
+    const { lines, selectedLineIdx : idx } = gMeme
+    lines.splice(idx,1)
+}
+
 function setImg(id) {
     gMeme.selectedImgId = id
 }
@@ -45,7 +50,7 @@ function _createLine() {
     const size = gSize
     const fillColor = gFillColor
     const strokeColor = gSrokeColor
-    const pos = { x: gMeme.selectedLineIdx * 20+20, y: gMeme.selectedLineIdx * 30 + 40 }
+    const pos = { x: gMeme.selectedLineIdx * 20 + 20, y: gMeme.selectedLineIdx * 30 + 40 }
 
     return { txt, size, fillColor, strokeColor, pos }
 }
@@ -59,13 +64,13 @@ function selectLine(idx) {
     gMeme.selectedLineIdx = idx
 }
 
-function getTxtMeasurement() {
-    const { lines, selectedLineIdx } = gMeme
-    const fontSize = lines[selectedLineIdx].size
+function getTxtMeasurement(idx = gMeme.selectedLineIdx) {
+    const { lines } = gMeme
+    const fontSize = lines[idx].size
 
     gCtx.font = `${fontSize}px Arial`
 
-    const textMetrics = gCtx.measureText(lines[selectedLineIdx].txt);
+    const textMetrics = gCtx.measureText(lines[idx].txt);
     const width = textMetrics.width;
     const height = fontSize;
 

@@ -27,15 +27,15 @@
         <section class="editor grid">
 
             <div class=" canvas-container">
-                <canvas height="400px" width="400px" onclick="onMouseClick(event)"></canvas>
+                <canvas height="400px" width="400px" onclick="onSelectLine(event)"></canvas>
             </div>
 
             <div class="controls-container flex column align-center ">
 
-                <input class="txt-input" type="text" placeholder="Type here" oninput="onGetUserText(this.value)">
+                <input class="txt-input" type="text" placeholder="Add text here" oninput="onGetUserText(this.value)">
                 <button class="btn" onclick="onAddLine()"><img src="Assets/ICONS/add.png"></button>
-                <button class="btn" onclick="onSwitchLine()"><img
-                        src="Assets/ICONS/up-and-down-opposite-double-arrows-side-by-side.png"></button>
+                <button class="btn" onclick="onSwitchLine()"><img src="Assets/ICONS/up-and-down-opposite-double-arrows-side-by-side.png"></button>
+                <button class="btn" onclick="onDeleteLine()"><img src="Assets/ICONS/trash.png"></button>
 
                         
                         <label for="stroke-color"><img src="Assets/ICONS/text stroke.png"></label>

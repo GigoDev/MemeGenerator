@@ -94,22 +94,35 @@ function onAddLine() {
 }
 
 function onSwitchLine() {
-    let elInput = document.querySelector('.txt-input')
-    elInput.value = ''
     switchLine()
     renderMeme()
+    setTxtInput(gMeme)
 }
 
-function onMouseClick(ev) {
+function onSelectLine(ev) {
     const { offsetX, offsetY } = ev
-    const clickedLineIdx = gMeme.lines.findIndex(({ pos }) => {
-        const { width, height } = getTxtMeasurement()
+    const clickedLineIdx = gMeme.lines.findIndex(({ pos },idx) => {
+        const { width, height } = getTxtMeasurement(idx)
 
         return offsetX >= pos.x - PADDING && offsetX <= pos.x + width + PADDING &&
             offsetY >= pos.y - height && offsetY <= pos.y
     })
-
+    if (clickedLineIdx!== -1){
     selectLine(clickedLineIdx)
+    renderMeme()
+    setTxtInput(gMeme)
+    }
+}
+
+function onDeleteLine() {
+    removeLine()
+    switchLine()
     renderMeme()
 }
 
+function setTxtInput({lines,selectedLineIdx}) {
+   let elInput = document.querySelector('.txt-input') 
+   console.log( gMeme)
+   elInput.value =  lines[selectedLineIdx].txt
+   elInput.focus()
+}
