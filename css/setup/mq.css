@@ -49,7 +49,18 @@
     .main-footer{
         height: 350px;
     }
+
+    .btn{
+        width: 3rem;
+        border-radius: 16;
+    }
+
+    .controls-container label{
+        width: 3rem;
+        border-radius: 16;
+    }
 }
+
 
 /* LARGE */
 @media (min-width: 1040px) {

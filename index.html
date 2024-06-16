@@ -16,6 +16,7 @@
             <div class="logo"><img src="Assets/LOGO/LOGO.png"></div>
             <ul class="dropdown-content clean-list">
                 <li><a onclick="onShowGallery()" href="#">gallery</a></li>
+                <li class="line">|</li>
                 <li><a href="#">About</a></li>
             </ul>
 
@@ -53,7 +54,9 @@
                 <button class="btn decrease-btn" onclick="onSetTxtSize(-1)"><img
                         src="Assets/ICONS/decrease font - icon.png"></button>
 
-                <a class="btn download" href="#" onclick="onDownloadImg(this)" download="my-meme.jpg"> Download</a>
+                <a class="download file-btn" href="#" onclick="onDownloadImg(this)" download="my-meme.jpg"> Download</a>
+                <button class="share file-btn" onclick="onUploadImg()">Share</button>
+            
             </div>
 
         </section>
@@ -67,6 +70,7 @@
 
     <script src="js/memeService.js"></script>
     <script src="js/galleryService.js"></script>
+    <script src="js/sharing-on-facebook.js"></script>
     <script src="js/memeController.js"></script>
     <script src="js/galleryController.js"></script>
     <script src="js/main.js"></script>

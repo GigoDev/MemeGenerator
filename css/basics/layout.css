@@ -19,8 +19,8 @@
 .gallery {
     display: none;
 
-    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 0.5rem;
 }
 
 /* Editor layout */
@@ -34,48 +34,51 @@
 .controls-container {
     grid-template-columns: repeat(5, auto);
     grid-template-rows: repeat(5, 1fr);
-    grid-template-areas: 
-    "txt txt txt txt txt"
-    " . switch add delete . "
-    ". increase decrease . . "
-    ". stroke fill . . "
-    "download . . . . "
+    grid-template-areas:
+        " txt txt txt txt . "
+        "switch add delete . . "
+        " . increase decrease . . "
+        " . stroke fill . . "
+        "download share .  . . "
     ;
 }
 
-.txt-input{
+.txt-input {
     grid-area: txt;
 }
 
-.add-btn{
+.add-btn {
     grid-area: add;
 }
 
-.switch-btn{
+.switch-btn {
     grid-area: switch;
 }
 
-.delete-btn{
+.delete-btn {
     grid-area: delete;
 }
 
-.stroke-lable{
+.stroke-lable {
     grid-area: stroke;
 }
 
-.fill-lable{
+.fill-lable {
     grid-area: fill;
 }
 
-.increase-btn{
+.increase-btn {
     grid-area: increase;
 }
 
-.decrease-btn{
+.decrease-btn {
     grid-area: decrease;
 }
 
-.download{
+.download {
     grid-area: download;
 }
 
+.share {
+    grid-area: share;
+}
