@@ -4,7 +4,7 @@
     display: grid;
     grid-template-columns:
         minmax(20px, 1fr) minmax(auto, 860px) minmax(20px, 1fr);
-        gap: 1em;
+    gap: 4rem;
 }
 
 .main-layout>*:not(.full) {
@@ -23,3 +23,61 @@
     grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
     gap: 20px;
 }
+
+/* Editor layout */
+
+.editor {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+/* Controls layout */
+
+.controls-container {
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-template-areas: 
+    "txt txt txt txt txt"
+    " . switch add delete . "
+    ". increase decrease . . "
+    ". stroke fill . . "
+    "download download . . . "
+    ;
+}
+
+.txt-input{
+    grid-area: txt;
+}
+
+.add-btn{
+    grid-area: add;
+}
+
+.switch-btn{
+    grid-area: switch;
+}
+
+.delete-btn{
+    grid-area: delete;
+}
+
+.stroke-lable{
+    grid-area: stroke;
+}
+
+.fill-lable{
+    grid-area: fill;
+}
+
+.increase-btn{
+    grid-area: increase;
+}
+
+.decrease-btn{
+    grid-area: decrease;
+}
+
+.download{
+    grid-area: download;
+}
+

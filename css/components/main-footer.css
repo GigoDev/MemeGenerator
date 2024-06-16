@@ -1,0 +1,9 @@
+.main-footer{
+    height:315px;
+
+    background-color: var(--clrPrimary1);
+}
+
+.main-footer{
+    color: white;
+}

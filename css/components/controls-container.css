@@ -20,3 +20,10 @@
     background-color: var(--clrPrimary1);
 }
 
+.txt-input{
+    padding: 0.8rem;
+
+    border-radius: 1rem;
+
+}
+

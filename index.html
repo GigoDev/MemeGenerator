@@ -22,42 +22,51 @@
         </nav>
     </header>
 
-    <main>
+    <main class="main-layout">
 
-        <section class="editor grid">
+        <section class="editor grid ">
 
             <div class=" canvas-container">
                 <canvas height="400px" width="400px" onclick="onSelectLine(event)"></canvas>
             </div>
 
-            <div class="controls-container flex column align-center ">
+            <div class="controls-container grid align-center ">
 
                 <input class="txt-input" type="text" placeholder="Add text here" oninput="onGetUserText(this.value)">
-                <button class="btn" onclick="onAddLine()"><img src="Assets/ICONS/add.png"></button>
-                <button class="btn" onclick="onSwitchLine()"><img src="Assets/ICONS/up-and-down-opposite-double-arrows-side-by-side.png"></button>
-                <button class="btn" onclick="onDeleteLine()"><img src="Assets/ICONS/trash.png"></button>
+                <button class="btn add-btn" onclick="onAddLine()"><img src="Assets/ICONS/add.png"></button>
+                <button class="btn switch-btn" onclick="onSwitchLine()"><img
+                        src="Assets/ICONS/up-and-down-opposite-double-arrows-side-by-side.png"></button>
+                <button class="btn delete-btn" onclick="onDeleteLine()"><img src="Assets/ICONS/trash.png"></button>
 
-                        
-                        <label for="stroke-color"><img src="Assets/ICONS/text stroke.png"></label>
-                        <input type="color" title="stroke-color" class="stroke-color" value="#000000" id="stroke-color"
-                        onchange="onSetColor()" />
-                        
-                        
-                        <label for="fill-color"><img src="Assets/ICONS/paint-board-and-brush.png" ></label>
-                        <input type="color" title="fill-color" class="fill-color" value="#ffffff" id="fill-color"
-                        onchange="onSetColor()" />
-                        
-                        
-                        <button class="btn" onclick="onSetTxtSize(1)"><img src="Assets/ICONS/increase font - icon.png"></button>
-                        <button class="btn" onclick="onSetTxtSize(-1)"><img src="Assets/ICONS/decrease font - icon.png" ></button>
-                        
-                        <a class="btn" href="#" onclick="onDownloadImg(this)" download="my-meme.jpg"> Download</a>
+
+                <label class="stroke-lable" for="stroke-color"><img src="Assets/ICONS/text stroke.png"></label>
+                <input type="color" title="stroke-color" class="stroke-color" value="#000000" id="stroke-color"
+                    onchange="onSetColor()" />
+
+
+                <label class="fill-lable" for="fill-color"><img src="Assets/ICONS/paint-board-and-brush.png"></label>
+                <input type="color" title="fill-color" class="fill-color" value="#ffffff" id="fill-color"
+                    onchange="onSetColor()" />
+
+
+                <button class="btn increase-btn" onclick="onSetTxtSize(1)"><img src="Assets/ICONS/increase font - icon.png"></button>
+                <button class="btn decrease-btn" onclick="onSetTxtSize(-1)"><img
+                        src="Assets/ICONS/decrease font - icon.png"></button>
+
+                <a class="btn download" href="#" onclick="onDownloadImg(this)" download="my-meme.jpg"> Download</a>
             </div>
 
         </section>
         <section class="gallery grid"></section>
 
     </main>
+    <footer class="main-footer main-layout full">
+        <div class="flex column align-center justify-center ">
+            <div class="logo"><img src="Assets/LOGO/LOGO.png"></div>
+            <h2>All rights reserved 2024</h2>
+        </div>
+    </footer>
+
     <script src="js/memeService.js"></script>
     <script src="js/galleryService.js"></script>
     <script src="js/memeController.js"></script>

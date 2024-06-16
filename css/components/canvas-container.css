@@ -1,8 +1,7 @@
 
 .canvas-container{  
-    height: 60vh;
+    height: 400px;
     width: minmax(60vw,600px);
-    margin-block-end: 2rem ;
 }
 
 canvas{
