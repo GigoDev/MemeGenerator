@@ -17,8 +17,6 @@
 /* Gallery layout */
 
 .gallery {
-    display: none;
-
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: 0.5rem;
 }

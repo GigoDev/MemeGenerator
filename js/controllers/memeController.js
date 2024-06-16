@@ -19,10 +19,10 @@ function renderMeme() {
     const selectedLine = lines[selectedLineIdx]
 
     drawImg(selectedImgId, () => {
+       
         lines.forEach(line => drawText(line))
-
-        drawText(selectedLine)
         drawRect(selectedLine.pos)
+        drawText(selectedLine)
     })
 
 }
@@ -52,7 +52,6 @@ function drawText({ txt, size, fillColor, strokeColor, pos }) {
     gCtx.fillStyle = fillColor
     gCtx.font = `${size}px ${gFont}`
     gCtx.textAlign = 'start'
-    // gCtx.textBaseline = 'middle'
     gCtx.fillText(txt, x, y)
     gCtx.strokeText(txt, x, y)
 }
@@ -60,11 +59,13 @@ function drawText({ txt, size, fillColor, strokeColor, pos }) {
 function drawRect({ x, y }) {
     const { width, height } = getTxtMeasurement()
 
+
     gCtx.strokeStyle = 'white'
     gCtx.lineWidth = 2
     gCtx.strokeRect(x - PADDING, y - height + PADDING, width + PADDING * 2, height)
 
 }
+
 
 function resizeCanvas() {
     const elContainer = document.querySelector('.canvas-container')

@@ -19,4 +19,5 @@ function onShowGallery(){
 function onShowEditor(){
     document.querySelector('.gallery').style.display = 'none'
     document.querySelector('.editor').style.display = 'grid'
+    resizeCanvas()
 }
