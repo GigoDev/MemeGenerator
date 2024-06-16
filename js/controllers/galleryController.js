@@ -1,9 +1,12 @@
 'use strict'
 
+let gFilter
+
 function renderGallery() {
     const elGallery = document.querySelector('.gallery')
+    let imgs = getImgs()
 
-    gImgs.forEach(({ url, id }) => {
+    imgs.forEach(({ url, id }) => {
         const elImg = new Image()
         elImg.src = url
         elImg.onload = () => {
@@ -19,3 +22,4 @@ function onImgSelect(id) {
     setImg(id)
     renderMeme()
 }
+
