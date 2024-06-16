@@ -8,7 +8,8 @@ let gMeme = {
         size: 30,
         fillColor: 'white',
         strokeColor: 'black',
-        pos: { x: 20, y: 40 }
+        pos: { x: 20, y: 40 },
+        isDrag: false
     }]
 }
 
@@ -22,8 +23,8 @@ function setLineTxt(txt) {
 }
 
 function removeLine() {
-    const { lines, selectedLineIdx : idx } = gMeme
-    lines.splice(idx,1)
+    const { lines, selectedLineIdx: idx } = gMeme
+    lines.splice(idx, 1)
 }
 
 function setImg(id) {
@@ -51,8 +52,9 @@ function _createLine() {
     const fillColor = gFillColor
     const strokeColor = gSrokeColor
     const pos = { x: gMeme.selectedLineIdx * 20 + 20, y: gMeme.selectedLineIdx * 30 + 40 }
+    const isDrag = false
 
-    return { txt, size, fillColor, strokeColor, pos }
+    return { txt, size, fillColor, strokeColor, pos, isDrag }
 }
 
 function switchLine() {
@@ -75,4 +77,25 @@ function getTxtMeasurement(idx = gMeme.selectedLineIdx) {
     const height = fontSize;
 
     return { width, height }
+}
+
+//  Drag and drop:
+
+function setLineDrag(isDrag) {
+    gMeme.lines[gMeme.selectedLineIdx].isDrag = isDrag
+}
+
+//* Move the circle in a delta, diff from the pervious pos
+function moveLine(dx, dy) {
+    gMeme.lines[gMeme.selectedLineIdx].pos.x += dx
+    gMeme.lines[gMeme.selectedLineIdx].pos.y += dy
+    
+}
+
+function isLineClicked(linePos, lineIdx, ev) {
+    const { offsetX, offsetY } = ev
+    const { width, height } = getTxtMeasurement(lineIdx)
+
+    return offsetX >= linePos.x - PADDING && offsetX <= linePos.x + width + PADDING &&
+        offsetY >= linePos.y - height && offsetY <= linePos.y
 }

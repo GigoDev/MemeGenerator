@@ -8,6 +8,8 @@ function onInit() {
     window.addEventListener('resize', resizeCanvas)
     resizeCanvas()
     renderGallery()
+    addListeners()
+
 }
 
 function onShowGallery(){

@@ -4,21 +4,34 @@ let gCtx
 let gSrokeColor = 'black'
 let gFillColor = 'white'
 let gSize = 30
+let gStartPos
 const PADDING = 5
+const TOUCH_EVS = ['touchstart', 'touchmove', 'touchend']
+
 
 
 /////////////Rendering:
 
 function renderMeme() {
-    const meme = getMeme()
-    const { lines, selectedImgId, selectedLineIdx } = meme
+
+    const { lines, selectedImgId, selectedLineIdx } = getMeme()
+    const selectedLine = lines[selectedLineIdx]
 
     drawImg(selectedImgId, () => {
         lines.forEach(line => drawText(line))
 
-        drawRect(lines[selectedLineIdx].pos)
+        drawText(selectedLine)
+        drawRect(selectedLine.pos)
     })
 
+}
+
+function renderSelectedLine() {
+    const { lines, selectedLineIdx } = getMeme()
+    const selectedLine = lines[selectedLineIdx]
+
+    drawText(selectedLine)
+    drawRect(selectedLine.pos)
 }
 
 function drawImg(id, callback) {
@@ -94,32 +107,100 @@ function onSwitchLine() {
     setTxtInput(gMeme)
 }
 
-function onSelectLine(ev) {
-    const { offsetX, offsetY } = ev
-    const clickedLineIdx = gMeme.lines.findIndex(({ pos },idx) => {
-        const { width, height } = getTxtMeasurement(idx)
-
-        return offsetX >= pos.x - PADDING && offsetX <= pos.x + width + PADDING &&
-            offsetY >= pos.y - height && offsetY <= pos.y
-    })
-    if (clickedLineIdx!== -1){
-    selectLine(clickedLineIdx)
-    renderMeme()
-    setTxtInput(gMeme)
-    }
-}
-
 function onDeleteLine() {
     removeLine()
     switchLine()
     renderMeme()
 }
 
-function setTxtInput({lines,selectedLineIdx}) {
-   let elInput = document.querySelector('.txt-input') 
-   console.log( gMeme)
-   elInput.value =  lines[selectedLineIdx].txt
-   elInput.focus()
+function setTxtInput({ lines, selectedLineIdx }) {
+    let elInput = document.querySelector('.txt-input')
+    elInput.value = lines[selectedLineIdx].txt
+    elInput.focus()
+}
+
+// // Drag and Drop:
+
+function onDown(ev) {
+    //* Get the ev pos from mouse or touch
+    const evPos = getEvPos(ev)
+
+
+    const clickedLineIdx = gMeme.lines.findIndex(({ pos }, idx) => isLineClicked(pos, idx, ev))
+    if (clickedLineIdx === -1) return
+
+    selectLine(clickedLineIdx)
+    renderMeme()
+    setLineDrag(true)
+
+    //* Save the pos we start from
+    gStartPos = evPos
+
+}
+
+function onMove(ev) {
+    const { lines, selectedLineIdx } = getMeme()
+    const { isDrag } = lines[selectedLineIdx]
+
+    if (!isDrag) return
+
+    document.body.style.cursor = 'grabbing'
+
+    const pos = getEvPos(ev)
+    //* Calc the delta, the diff we moved
+    const dx = pos.x - gStartPos.x
+    const dy = pos.y - gStartPos.y
+    moveLine(dx, dy)
+    //* Save the last pos, we remember where we`ve been and move accordingly
+    gStartPos = pos
+    //* The canvas is render again after every move
+    renderMeme()
+}
+
+function onUp() {
+    setLineDrag(false)
+    setTxtInput(gMeme)
+
+    document.body.style.cursor = 'pointer'
+}
+
+function addListeners() {
+    addMouseListeners()
+    addTouchListeners()
+}
+
+function addMouseListeners() {
+    gElCanvas.addEventListener('mousedown', onDown)
+    gElCanvas.addEventListener('mousemove', onMove)
+    gElCanvas.addEventListener('mouseup', onUp)
+}
+
+function addTouchListeners() {
+    gElCanvas.addEventListener('touchstart', onDown)
+    gElCanvas.addEventListener('touchmove', onMove)
+    gElCanvas.addEventListener('touchend', onUp)
+}
+
+function getEvPos(ev) {
+
+    let pos = {
+        x: ev.offsetX,
+        y: ev.offsetY,
+    }
+
+    if (TOUCH_EVS.includes(ev.type)) {
+        //* Prevent triggering the mouse ev
+        ev.preventDefault()
+        //* Gets the first touch point
+        ev = ev.changedTouches[0]
+        //* Calc the right pos according to the touch screen
+        pos = {
+            x: ev.pageX - ev.target.offsetLeft - ev.target.clientLeft,
+            y: ev.pageY - ev.target.offsetTop - ev.target.clientTop,
+        }
+        // console.log('pos:', pos)
+    }
+    return pos
 }
 
 // Files:
