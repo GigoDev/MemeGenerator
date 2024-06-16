@@ -68,7 +68,7 @@ function getTxtMeasurement(idx = gMeme.selectedLineIdx) {
     const { lines } = gMeme
     const fontSize = lines[idx].size
 
-    gCtx.font = `${fontSize}px Arial`
+    gCtx.font = `${fontSize}px Impact`
 
     const textMetrics = gCtx.measureText(lines[idx].txt);
     const width = textMetrics.width;

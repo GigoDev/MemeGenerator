@@ -36,10 +36,10 @@
     grid-template-rows: repeat(5, 1fr);
     grid-template-areas:
         " txt txt txt txt txt "
-        "switch add delete . . "
-        " . increase decrease . . "
-        " . stroke fill . . "
-        "download share upload  . . "
+        " add delete switch . . "
+        " increase decrease . . . "
+        " stroke fill . . . "
+        " download share upload  . . "
     ;
 
     align-items: center;
