@@ -2,4 +2,12 @@
     /* PALLETE */
     --clrPrimary1: orange;
     --clrEditor: lightgrey;
+
+    /* layout */
+    --headerHeight: 100px;
+
+    /* mq */
+    --l: 1060px;
+    --m: 860px;
+    --s: 600px;
 }

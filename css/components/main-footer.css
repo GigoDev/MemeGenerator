@@ -1,9 +1,8 @@
 .main-footer{
-    height:315px;
+
+    
+    height:175px;
 
     background-color: var(--clrPrimary1);
-}
-
-.main-footer{
     color: white;
 }

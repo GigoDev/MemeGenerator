@@ -70,11 +70,6 @@ function onGetUserText(text) {
     renderMeme()
 }
 
-function onDownloadImg(elLink) {
-    var imgContent = gElCanvas.toDataURL();
-    elLink.href = imgContent
-}
-
 function onSetColor() {
     gSrokeColor = document.querySelector('.stroke-color').value
     gFillColor = document.querySelector('.fill-color').value
@@ -125,4 +120,11 @@ function setTxtInput({lines,selectedLineIdx}) {
    console.log( gMeme)
    elInput.value =  lines[selectedLineIdx].txt
    elInput.focus()
+}
+
+// Files:
+
+function onDownloadImg(elLink) {
+    var imgContent = gElCanvas.toDataURL();
+    elLink.href = imgContent
 }

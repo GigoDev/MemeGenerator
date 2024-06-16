@@ -1,6 +1,3 @@
-.controls-container {
-    gap: 1rem;
-}
 
 .stroke-color,
 .fill-color {
@@ -8,7 +5,7 @@
 }
 
 .controls-container label{
-    width: 2em;
+    width: 1rem;
 
     cursor: pointer;
 }
@@ -24,6 +21,5 @@
     padding: 0.8rem;
 
     border-radius: 1rem;
-
 }
 
