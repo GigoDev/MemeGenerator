@@ -28,7 +28,7 @@
         <section class="editor grid">
 
             <div class=" canvas-container">
-                <canvas ></canvas>
+                <canvas></canvas>
             </div>
 
             <div class="controls-container grid align-center ">
@@ -49,8 +49,18 @@
                 <input type="color" title="fill-color" class="fill-color" value="#ffffff" id="fill-color"
                     onchange="onSetColor()" />
 
+                <select class="font-family" name="font-select" onchange="onSetFont(this.value)">
+                    <option value="impact">Impact</option>
+                    <option value="arial">Arial</option>
+                    <option value="verdana">Verdana</option>
+                    <option value="tahoma">Tahoma</option>
+                    <option value="georgia">Georgia</option>
+                    <option value="garamond">Garamond</option>
+                </select>
 
-                <button class="btn increase-btn" onclick="onSetTxtSize(1)"><img src="Assets/ICONS/increase font - icon.png"></button>
+
+                <button class="btn increase-btn" onclick="onSetTxtSize(1)"><img
+                        src="Assets/ICONS/increase font - icon.png"></button>
                 <button class="btn decrease-btn" onclick="onSetTxtSize(-1)"><img
                         src="Assets/ICONS/decrease font - icon.png"></button>
 
@@ -58,9 +68,9 @@
                 <button class="share file-btn" onclick="onUploadImg()">Share</button>
 
                 <label class="file-btn upload" for="file-input">Upload</label>
-                <input type="file" class="file-input" id="file-input" name="image" onchange="onImgInput(event)" accept="image/*" />
+                <input type="file" class="file-input" id="file-input" name="image" onchange="onImgInput(event)"
+                    accept="image/*" />
 
-            
             </div>
 
         </section>
@@ -68,16 +78,16 @@
 
     </main>
     <footer class="main-footer column flex justify-center align-center full">
-            <div class="logo"><img src="Assets/LOGO/LOGO.png"></div>
-            <h2>All rights reserved 2024</h2>
+        <div class="logo"><img src="Assets/LOGO/LOGO.png"></div>
+        <h2>All rights reserved 2024</h2>
     </footer>
 
-    <script src="js/memeService.js"></script>
-    <script src="js/galleryService.js"></script>
+    <script src="js/services/memeService.js"></script>
+    <script src="js/services/galleryService.js"></script>
     <script src="js/sharing-on-facebook.js"></script>
     <script src="js/upload-from-local.js"></script>
-    <script src="js/memeController.js"></script>
-    <script src="js/galleryController.js"></script>
+    <script src="js/controllers/memeController.js"></script>
+    <script src="js/controllers/galleryController.js"></script>
     <script src="js/main.js"></script>
 
 </body>

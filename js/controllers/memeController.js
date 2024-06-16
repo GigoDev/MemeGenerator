@@ -5,6 +5,7 @@ let gSrokeColor = 'black'
 let gFillColor = 'white'
 let gSize = 30
 let gStartPos
+let gFont = 'Impact'
 const PADDING = 5
 const TOUCH_EVS = ['touchstart', 'touchmove', 'touchend']
 
@@ -49,7 +50,7 @@ function drawText({ txt, size, fillColor, strokeColor, pos }) {
     gCtx.lineWidth = size / 20
     gCtx.strokeStyle = strokeColor
     gCtx.fillStyle = fillColor
-    gCtx.font = `${size}px Impact`
+    gCtx.font = `${size}px ${gFont}`
     gCtx.textAlign = 'start'
     // gCtx.textBaseline = 'middle'
     gCtx.fillText(txt, x, y)
@@ -113,6 +114,10 @@ function onDeleteLine() {
     renderMeme()
 }
 
+function onSetFont(value){
+    gFont = value
+}
+
 function setTxtInput({ lines, selectedLineIdx }) {
     let elInput = document.querySelector('.txt-input')
     elInput.value = lines[selectedLineIdx].txt
@@ -144,7 +149,7 @@ function onMove(ev) {
 
     if (!isDrag) return
 
-    document.body.style.cursor = 'grabbing'
+    document.body.style.cursor = 'move'
 
     const pos = getEvPos(ev)
     //* Calc the delta, the diff we moved
@@ -161,7 +166,7 @@ function onUp() {
     setLineDrag(false)
     setTxtInput(gMeme)
 
-    document.body.style.cursor = 'pointer'
+    document.body.style.cursor = 'default'
 }
 
 function addListeners() {

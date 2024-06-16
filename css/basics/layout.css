@@ -38,7 +38,7 @@
         " txt txt txt txt txt "
         " add delete switch . . "
         " increase decrease . . . "
-        " stroke fill . . . "
+        " stroke fill font . . "
         " download share upload  . . "
     ;
 
@@ -87,4 +87,8 @@
 
 .upload {
     grid-area: upload;
+}
+
+.font-family{
+    grid-area: font;
 }

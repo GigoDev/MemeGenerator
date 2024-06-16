@@ -70,7 +70,7 @@ function getTxtMeasurement(idx = gMeme.selectedLineIdx) {
     const { lines } = gMeme
     const fontSize = lines[idx].size
 
-    gCtx.font = `${fontSize}px Impact`
+    gCtx.font = `${fontSize}px ${gFont}`
 
     const textMetrics = gCtx.measureText(lines[idx].txt);
     const width = textMetrics.width;
@@ -85,7 +85,7 @@ function setLineDrag(isDrag) {
     gMeme.lines[gMeme.selectedLineIdx].isDrag = isDrag
 }
 
-//* Move the circle in a delta, diff from the pervious pos
+//* Move the line in a delta, diff from the pervious pos
 function moveLine(dx, dy) {
     gMeme.lines[gMeme.selectedLineIdx].pos.x += dx
     gMeme.lines[gMeme.selectedLineIdx].pos.y += dy
