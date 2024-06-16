@@ -35,12 +35,14 @@
     grid-template-columns: repeat(5, auto);
     grid-template-rows: repeat(5, 1fr);
     grid-template-areas:
-        " txt txt txt txt . "
+        " txt txt txt txt txt "
         "switch add delete . . "
         " . increase decrease . . "
         " . stroke fill . . "
-        "download share .  . . "
+        "download share upload  . . "
     ;
+
+    align-items: center;
 }
 
 .txt-input {
@@ -59,11 +61,11 @@
     grid-area: delete;
 }
 
-.stroke-lable {
+.stroke-label {
     grid-area: stroke;
 }
 
-.fill-lable {
+.fill-label {
     grid-area: fill;
 }
 
@@ -81,4 +83,8 @@
 
 .share {
     grid-area: share;
+}
+
+.upload {
+    grid-area: upload;
 }
